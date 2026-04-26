@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   let usDollarPrice = null; // Para guardar la cotización
   let showInARS = false;    // Estado del toggle de moneda
 
-  // URL Base de datos real para la DEMO
-  const DATA_SOURCE_BASE = "https://el-industrial.netlify.app";
+  // Usamos el Proxy de Netlify configurado en netlify.toml para saltar el CORS
+  const DATA_SOURCE_BASE = "/api-data";
 
   // Función para obtener el nombre del archivo JSON
   const getLatestJsonFileName = async () => {
