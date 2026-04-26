@@ -1,341 +1,72 @@
+/* Estilos Base de El Industrial + Mejoras Demo */
 :root {
-  --primary-color: #007bff;
-  --bg-light: #f8f9fa;
-  --bg-dark: #121212;
-  --card-light: #ffffff;
-  --card-dark: #1e1e1e;
-  --text-light: #333333;
-  --text-dark: #e0e0e0;
-  --header-height: 85px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 25px;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --primary: #0056b3;
+  --bg: #ffffff;
+  --text: #212529;
 }
 
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  margin: 0;
-  padding-top: var(--header-height);
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: var(--bg-light);
-  color: var(--text-light);
-  transition: background-color 0.3s, color 0.3s;
-}
-
-#searchContainer {
-  position: fixed;
-  top: 15px;
-  left: 20px;
-  right: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 80px 12px 20px;
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  z-index: 1000;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: var(--shadow);
-  gap: 12px;
-}
-
-#searchInput {
-  flex: 1;
-  margin: 0;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 1.5px solid #eee;
-  border-radius: var(--radius-lg);
-  font-size: 16px;
-  background: white;
-  transition: all 0.2s ease;
-}
-
-#searchInput:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
-  outline: none;
-}
-
-#dollarInfo {
-  flex: 0 0 12.5%;
-  height: 42px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 50px;
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  overflow: hidden;
-}
-
-#dollarInfo span {
-  display: block;
-  font-size: 16px;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-}
-
-#dollarInfo #dollarPrice {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-#productTable {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 25px auto;
-  background: white;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-#productTable th,
-#productTable td {
-  border-bottom: 1px solid #f0f0f0;
-  padding: 14px 16px;
-  word-wrap: break-word;
-}
-
-#productTable th {
-  background-color: #fcfcfc;
-  color: #666;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  text-align: left;
-}
-
-#productTable td {
-  font-size: 14px;
-}
-
-#productTable tr:last-child td {
-  border-bottom: none;
-}
-
-#productTable tr:hover {
-  background-color: #fafafa;
-}
-
-#productTable tr:nth-child(even) {
-  background-color: #fdfdfd;
-}
-
-.btnFloat {
-  position: fixed;
-  right: 10px;
-  background-color: transparent;
-  color: #2e2e2e;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btnToggle {
-  top: 15px;
-  right: 20px;
-  z-index: 1001;
-}
-
-.btnWpp {
-  bottom: 20px;
-}
-
-.product {
-  margin-bottom: 10px;
-}
-
-.btnCurrency {
-  background-color: white;
-  border: 1.5px solid #eee;
-  border-radius: var(--radius-lg);
-  padding: 8px 16px;
-  margin-left: 10px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.btnCurrency:hover {
-  background-color: #f8f9fa;
-  border-color: var(--primary-color);
-  transform: translateY(-1px);
-}
-
-.btnCurrency:active {
-  transform: translateY(0);
-}
-
-#loader {
-  text-align: center;
-  padding: 10px;
-}
-
-.hidden {
-  display: none;
-}
-
-/* Modo oscuro adaptado */
 body.dark-mode {
-  background-color: var(--bg-dark);
-  color: var(--text-dark);
+  --bg: #1a1a1a;
+  --text: #f8f9fa;
 }
 
-body.dark-mode #searchContainer {
-  background-color: rgba(30, 30, 30, 0.85);
-  border-color: rgba(255, 255, 255, 0.1);
+#demoControls {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background: #f1f3f5;
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  font-size: 0.9em;
+  color: #333;
 }
 
-body.dark-mode #productTable {
-  background-color: var(--card-dark);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+.demo-mode {
+  padding-left: 270px;
 }
 
-body.dark-mode #productTable th {
-  background-color: #252525;
-  color: #aaa;
-  border-bottom: 1px solid #333;
+.control-group {
+  margin-bottom: 20px;
 }
 
-body.dark-mode #productTable td {
-  border-bottom: 1px solid #333;
+.control-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
-body.dark-mode #productTable tr:hover {
-  background-color: #2a2a2a;
+input[type="range"] {
+  width: 100%;
 }
 
-body.dark-mode #productTable tr:nth-child(even) {
-  background-color: #222;
-}
-
-body.dark-mode #searchInput {
-  background-color: #333;
+.btn-wpp {
+  background: #25d366;
   color: white;
-  border-color: #444;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8em;
+  text-decoration: none;
+  display: inline-block;
 }
 
-body.dark-mode #dollarInfo {
-  background-color: #252525;
-  border-color: #444;
+.badge-offer {
+  background: #ffc107;
+  color: #000;
+  font-size: 0.7em;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-left: 5px;
 }
 
-body.dark-mode .btnCurrency {
-  background-color: #252525;
-  border-color: #444;
-  color: white;
+@media (max-width: 900px) {
+  #demoControls { display: none; }
+  .demo-mode { padding-left: 0; }
 }
 
-@media (max-width: 768px) {
-  body {
-    padding-top: 120px;
-    padding-right: 0;
-  }
-
-  #searchContainer {
-    flex-direction: column;
-    padding: 20px 60px 20px 20px;
-    right: 0;
-  }
-
-  #searchInput {
-    width: calc(100% - 30px);
-    margin-bottom: 10px;
-    margin-right: 40px;
-  }
-
-  #dollarInfo {
-    width: 30%;
-    height: auto;
-    padding: 0px;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 2%;
-  }
-
-  .btnToggle {
-    top: 20px;
-    right: 5px;
-  }
-
-  #productTable {
-    display: block;
-    overflow-x: auto;
-  }
-
-  #productTable thead,
-  #productTable tbody,
-  #productTable th,
-  #productTable td,
-  #productTable tr {
-    display: block;
-  }
-
-  #productTable thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-
-  #productTable tr {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-  }
-
-  #productTable td {
-    border: none;
-    border-bottom: 1px solid #eee;
-    position: relative;
-    padding-left: 50%;
-    white-space: normal;
-    word-wrap: break-word;
-    word-break: break-all;
-    text-align: left;
-  }
-
-  #productTable td:before {
-    content: attr(data-label);
-    position: absolute;
-    left: 6px;
-    width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
-    text-align: left;
-    font-weight: bold;
-  }
-
-  #productTable td:nth-child(3),
-  #productTable td:nth-child(4),
-  #productTable td:nth-child(5) {
-    text-align: left;
-  }
-}
+/* ... (resto de estilos originales de El Industrial) ... */

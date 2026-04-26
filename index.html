@@ -10,8 +10,32 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="tornillo.png" type="image/png" />
   </head>
-  <body>
-    <!-- <h1>El Indus<img src="t.png" alt="" />rial</h1> -->
+  <body class="demo-mode">
+    <!-- Panel de Control para la Venta (Solo en Demo) -->
+    <div id="demoControls">
+      <h3>🛠️ Configuración de Negocio</h3>
+      <p><small>Simula cómo vería tu cliente los precios según tu estrategia.</small></p>
+      
+      <div class="control-group">
+        <label>Ganancia (Markup): <span id="valMarkup">0</span>%</label>
+        <input type="range" id="inputMarkup" min="0" max="100" value="0">
+      </div>
+
+      <div class="control-group">
+        <label>Descuento Especial: <span id="valDiscount">0</span>%</label>
+        <input type="range" id="inputDiscount" min="0" max="50" value="0">
+      </div>
+
+      <div class="control-group">
+        <label class="switch-label">
+          <input type="checkbox" id="inputIVA" checked> Incluir IVA (21%)
+        </label>
+      </div>
+
+      <hr>
+      <p><small>Esta barra es solo para ti. Tu cliente final solo verá el resultado pulido.</small></p>
+    </div>
+
     <button id="themeToggle" class="btnFloat btnToggle">🌙</button>
     <!-- <input type="text" id="searchInput" placeholder="Buscar productos..." /> -->
     <div id="searchContainer">

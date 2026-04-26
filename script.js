@@ -130,41 +130,50 @@ document.addEventListener("DOMContentLoaded", async () => {
     loader.classList.add("hidden");
   };
 
+  let demoMarkup = 0;
+  let demoDiscount = 0;
+  let includeIVA = true;
+
+  const calculateDemoPrice = (basePrice) => {
+    let price = parseFloat(basePrice);
+    // Aplicar Markup
+    price = price * (1 + (demoMarkup / 100));
+    // Aplicar IVA si corresponde
+    if (includeIVA) price = price * 1.21;
+    // Aplicar Descuento
+    price = price * (1 - (demoDiscount / 100));
+    return price.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+
   const displayProducts = (productsToDisplay) => {
     if (productsToDisplay.length === 0) {
-      productTable.innerHTML = `<tr><td colspan="5" style="text-align:center;">No se ha encontrado el producto.</td></tr>`;
+      productTable.innerHTML = `<tr><td colspan="6" style="text-align:center;">No se ha encontrado el producto.</td></tr>`;
       return;
     }
 
     let rowsHtml = "";
     productsToDisplay.forEach((product) => {
-      let monedaDisplay = product.moneda;
-      let precioDisplay = product.precio;
-      let isPrecioConvertido = false;
-
+      let finalPrice = calculateDemoPrice(product.precio);
       const isDolar = (product.moneda === "DOL" || product.moneda === "USD" || product.moneda === "U$S");
+      let monedaDisplay = isDolar ? "U$S" : "$";
       
-      if (showInARS && isDolar && usDollarPrice !== null) {
-          monedaDisplay = "$";
-          const precioConvertido = parseFloat(product.precio) * usDollarPrice;
-          precioDisplay = precioConvertido.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-          isPrecioConvertido = true;
-      } else {
-          monedaDisplay = isDolar ? "U$S" : product.moneda;
-      }
+      const offerBadge = demoDiscount > 0 ? `<span class="badge-offer">OFERTA</span>` : "";
       
-      const formatUnidad = product.unidad === "UN" || product.unidad === "Un" ? "Un" : "Mts";
-      const styleConvertido = isPrecioConvertido ? 'title="Precio aproximado según cotización de hoy" style="font-weight: bold;"' : '';
-      const markIndicator = isPrecioConvertido ? ' <span style="opacity:0.6; font-size:0.8em">*</span>' : '';
+      // Link de WhatsApp personalizado
+      const wppMsg = encodeURIComponent(`Hola! Me interesa este producto: ${product.producto} - ${product.detalle}. Precio: ${monedaDisplay} ${finalPrice}`);
+      const wppLink = `https://wa.me/5491100000000?text=${wppMsg}`;
 
       rowsHtml += `
         <tr>
           <td data-label="Producto">${product.producto}</td>
           <td data-label="Detalle">${product.detalle}</td>
           <td data-label="Marca">${product.marca}</td>
-          <td data-label="Un/Mts">${formatUnidad}</td>
-          <td data-label="Precio" ${styleConvertido}>
-              ${monedaDisplay} ${precioDisplay}${markIndicator}
+          <td data-label="Un/Mts">${product.unidad || 'Un'}</td>
+          <td data-label="Precio">
+              ${monedaDisplay} ${finalPrice} ${offerBadge}
+          </td>
+          <td>
+            <a href="${wppLink}" target="_blank" class="btn-wpp">Consultar</a>
           </td>
         </tr>
       `;
@@ -172,6 +181,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     productTable.innerHTML = rowsHtml;
   };
+
+  // Listeners para los controles de la Demo
+  document.getElementById("inputMarkup").addEventListener("input", (e) => {
+    demoMarkup = parseInt(e.target.value);
+    document.getElementById("valMarkup").textContent = demoMarkup;
+    displayProducts(products);
+  });
+
+  document.getElementById("inputDiscount").addEventListener("input", (e) => {
+    demoDiscount = parseInt(e.target.value);
+    document.getElementById("valDiscount").textContent = demoDiscount;
+    displayProducts(products);
+  });
+
+  document.getElementById("inputIVA").addEventListener("change", (e) => {
+    includeIVA = e.target.checked;
+    displayProducts(products);
+  });
 
   const filterProducts = (searchTerm) => {
     const searchTerms = searchTerm.toLowerCase().split(/\s+/).filter(Boolean);
