@@ -1,0 +1,13 @@
+{
+  "siteName": "TU EMPRESA AQUÍ",
+  "tagline": "Catálogo Digital Inteligente y Actualizado",
+  "logoUrl": "t.png",
+  "faviconUrl": "tornillo.png",
+  "primaryColor": "#0056b3",
+  "accentColor": "#17a2b8",
+  "contactWpp": "5491100000000",
+  "socialLinks": {
+    "whatsapp": "#",
+    "web": "#"
+  }
+}

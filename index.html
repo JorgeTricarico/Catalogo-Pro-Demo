@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>El Industrial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="tornillo.png" type="image/png" />
+  </head>
+  <body>
+    <!-- <h1>El Indus<img src="t.png" alt="" />rial</h1> -->
+    <button id="themeToggle" class="btnFloat btnToggle">🌙</button>
+    <!-- <input type="text" id="searchInput" placeholder="Buscar productos..." /> -->
+    <div id="searchContainer">
+      <input type="text" id="searchInput" placeholder="Buscar productos..." />
+      <button id="currencyToggle" class="btnCurrency" style="display: none;" title="Convertir Dólares">
+        🔄 AR$
+      </button>
+      <div id="dollarInfo" style="margin-left: auto;">
+        <span>Dolar Hoy</span>
+        <span id="dollarDatee" style="font-size: 0.7em; opacity: 0.7;"></span>
+        <span id="dollarPrice"></span>
+      </div>
+    </div>
+    <table id="productTable">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Detalle</th>
+          <th>Marca</th>
+          <th>U/M</th>
+          <th>Precio</th>
+        </tr>
+        <!-- Articulo Detalle Marca	IVA	Unidad	Dto.	Mon.	P/Lista -->
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div id="loader">
+      Cargando productos... Esto podría demorar un tiempo...
+    </div>
+    <div id="fechaLista"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
